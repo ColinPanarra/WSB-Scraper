@@ -101,7 +101,7 @@ async def on_ready():
     #print(f'{client.user} has connected to Discord!')
 
 
-    channel = client.get_channel(749370051714351214)
+    channel = client.get_channel(PLACEHOLDER)
     await embed(channel)
     #await channel.send(title_string + top_hourly_string )
 #    await channel.send(top_hourly_string)
