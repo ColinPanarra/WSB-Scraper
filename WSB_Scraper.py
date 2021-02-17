@@ -22,8 +22,7 @@ def percent(x,y):
     return round(percent,1)
 
 #updates count in csv
-#TODO - find how to change the count in each column (should just be a +1 for each)
-#     - reset day, week, month, and year on correct day
+#reset day, week, month, and year on correct day
 def reset_day():
     curr_hour = pd.Timestamp.now().hour
     if curr_hour == 0:
@@ -32,7 +31,7 @@ def reset_day():
         return False
 
 def reset_week():
-    #today = today.date()
+    
     if ((datetime.datetime.today().weekday() == "Sunday") and reset_day()):
         return True
     else:
@@ -40,7 +39,7 @@ def reset_week():
 
 def reset_open_close():
     curr_hour = pd.Timestamp.now().hour
-    if(curr_hour==9 and reset_week()):
+    if(curr_hour==9):
         return True
     else:
         return False
@@ -232,7 +231,7 @@ def check_resets():
             cell_reference_daily_curr.value = 0
 
 
-    #mon-fri we will reset when the market opens.
+  #mon-fri we will reset when the market opens.
     if(reset_open_close()):
 
         for i in range(2, len(NASDAQ_list)+1):
