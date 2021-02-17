@@ -116,7 +116,7 @@ def find_trending():
     weekly_values_dict =  sorted( weekly_values_dict.items(), key=lambda x: x[1], reverse=True)
     open_closed_values_dict =  sorted( open_closed_values_dict.items(), key=lambda x: x[1], reverse=True)
 
-
+##TODO: MAKE METHOD TO CONDENSE ADDING VALUES TO EXCEL SHEET.
     for i in range(9):
         row_value = i + 2
         cell_reference_hourly_top_stock = hourly_worksheet.cell(row=row_value,column=9)
@@ -306,13 +306,7 @@ def get_stock_list(stock_type):
     column_list = [column[x].value for x in range(len(column))]
 
     return column_list
-#    if(stock_type=='NASDAQ'):
-#        #print  df['NASDAQ'].to_list()
-##
-#    elif(stock_type=='CQS'):
-#        return df['CQS'].to_list()
-#    else:
-#        return df['ACT'].to_list()
+
 
 #removes nonEmoji characters
 def ignore_emoji(content):
@@ -325,24 +319,21 @@ NASDAQ_list=get_stock_list('NASDAQ')
 def scan_text_for_stocks(text):
 
     text = ignore_emoji(text)
-
-    #CQS_list = get_stock_list('CQS')
-    #ACT_list = get_stock_list('ACT')
-
+   
 
     text.replace('$','')
     text_list = text.split()
 
     for word in text_list:
-        if word in (NASDAQ_list): #or CQS_list or ACT_list):
+        if word in (NASDAQ_list):
             if word in stock_dictionary:
-                stock_dictionary[word] = stock_dictionary.get(word)+1 #.update(word = stock_dictionary.get(word)+1)
+                stock_dictionary[word] = stock_dictionary.get(word)+1 
 
             else:
                 stock_dictionary[word]=1
 
 
-#TODO SPLIT STRING INTO ARRAY OF WORDS AND ADD TO STOCK DICTIONARY, IF EXISTS THEN ++
+
 #pulls data from postArchive.txt or commentArchive.txt to create a list that filter methods can use to compare.
 def generate_archive_list(input):
 
@@ -395,8 +386,6 @@ def filter_posts(wsb_posts):
 
 #grabs top 50 posts IDs in each category and passes them through filter posts
 def create_post_list():
-
-
     wsb_posts = []
     wsb_subreddit = reddit.subreddit('wallstreetbets')
     #successfully grabs top 100 posts
