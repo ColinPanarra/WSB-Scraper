@@ -11,7 +11,7 @@ from collections import defaultdict, Counter
 
 
 #authentication tokens
-reddit = praw.Reddit(client_id='Hoh5COYowZyKEw', client_secret='FakeSecret', user_agent='WSB_Stock_Mentions')
+reddit = praw.Reddit(client_id='FakeId', client_secret='FakeSecret', user_agent='WSB_Stock_Mentions')
 
 #globalDictionary to update stock count
 stock_dictionary= {"stock_name": "count"}
